@@ -330,6 +330,10 @@ class ObjectSerializer
             }
         }
 
+        if ($class === 'mixed') {
+            return (array)$data;
+        }
+
         /** @psalm-suppress ParadoxicalCondition */
         if (in_array($class, ['bool', 'boolean', 'double', 'float', 'int', 'integer', 'object', 'string'], true)) {
             settype($data, $class);
