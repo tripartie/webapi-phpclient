@@ -120,6 +120,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requestCreateTransactionTemplate** | [**\TripartieWebAPI\Model\RequestCreateTransactionTemplate**](../Model/RequestCreateTransactionTemplate.md)|  |
+ **dryRun** | **bool**| Do a dry-run? | [optional]
 
 ### Return type
 

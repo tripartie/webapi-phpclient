@@ -106,4 +106,13 @@ class RequestRegisterUserTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "lang"
+     */
+    public function testPropertyLang()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

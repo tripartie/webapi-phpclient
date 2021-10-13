@@ -446,14 +446,15 @@ class TransactionTemplatesApi
      * Create
      *
      * @param  \TripartieWebAPI\Model\RequestCreateTransactionTemplate $requestCreateTransactionTemplate requestCreateTransactionTemplate (required)
+     * @param  ?bool $dryRun dryRun (optional)
      *
      * @throws \TripartieWebAPI\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \TripartieWebAPI\Model\ModelTransactionTemplate|\TripartieWebAPI\Model\Error
      */
-    public function create($requestCreateTransactionTemplate)
+    public function create($requestCreateTransactionTemplate, $dryRun = false)
     {
-        list($response) = $this->createWithHttpInfo($requestCreateTransactionTemplate);
+        list($response) = $this->createWithHttpInfo($requestCreateTransactionTemplate, $dryRun);
         return $response;
     }
 
@@ -463,14 +464,15 @@ class TransactionTemplatesApi
      * Create
      *
      * @param  \TripartieWebAPI\Model\RequestCreateTransactionTemplate $requestCreateTransactionTemplate (required)
+     * @param  ?bool $dryRun dryRun (optional)
      *
      * @throws \TripartieWebAPI\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \TripartieWebAPI\Model\ModelTransactionTemplate|\TripartieWebAPI\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($requestCreateTransactionTemplate)
+    public function createWithHttpInfo($requestCreateTransactionTemplate, $dryRun = false)
     {
-        $request = $this->createRequest($requestCreateTransactionTemplate);
+        $request = $this->createRequest($requestCreateTransactionTemplate, $dryRun);
 
         try {
             $options = $this->createHttpClientOption();
@@ -571,13 +573,14 @@ class TransactionTemplatesApi
      * Create
      *
      * @param  \TripartieWebAPI\Model\RequestCreateTransactionTemplate $requestCreateTransactionTemplate (required)
+     * @param  ?bool $dryRun dryRun (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($requestCreateTransactionTemplate)
+    public function createAsync($requestCreateTransactionTemplate, $dryRun = false)
     {
-        return $this->createAsyncWithHttpInfo($requestCreateTransactionTemplate)
+        return $this->createAsyncWithHttpInfo($requestCreateTransactionTemplate, $dryRun)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -591,14 +594,15 @@ class TransactionTemplatesApi
      * Create
      *
      * @param  \TripartieWebAPI\Model\RequestCreateTransactionTemplate $requestCreateTransactionTemplate (required)
+     * @param  ?bool $dryRun dryRun (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($requestCreateTransactionTemplate)
+    public function createAsyncWithHttpInfo($requestCreateTransactionTemplate, $dryRun = false)
     {
         $returnType = '\TripartieWebAPI\Model\ModelTransactionTemplate';
-        $request = $this->createRequest($requestCreateTransactionTemplate);
+        $request = $this->createRequest($requestCreateTransactionTemplate, $dryRun);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -638,11 +642,12 @@ class TransactionTemplatesApi
      * Create request for operation 'create'
      *
      * @param  \TripartieWebAPI\Model\RequestCreateTransactionTemplate $requestCreateTransactionTemplate (required)
+     * @param  ?bool $dryRun dryRun (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($requestCreateTransactionTemplate)
+    public function createRequest($requestCreateTransactionTemplate, $dryRun = false)
     {
         // verify the required parameter 'requestCreateTransactionTemplate' is set
         if ($requestCreateTransactionTemplate === null || (is_array($requestCreateTransactionTemplate) && count($requestCreateTransactionTemplate) === 0)) {
@@ -657,6 +662,11 @@ class TransactionTemplatesApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        if ($dryRun) {
+            $queryParams['dry-run'] = 1;
+        }
 
 
 

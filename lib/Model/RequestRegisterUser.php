@@ -62,7 +62,8 @@ class RequestRegisterUser implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'email' => 'string',
         'externalId' => 'string',
-        'displayName' => 'string'
+        'displayName' => 'string',
+        'lang' => 'string',
     ];
 
     /**
@@ -75,7 +76,8 @@ class RequestRegisterUser implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'email' => null,
         'externalId' => null,
-        'displayName' => null
+        'displayName' => null,
+        'lang' => null,
     ];
 
     /**
@@ -107,7 +109,8 @@ class RequestRegisterUser implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $attributeMap = [
         'email' => 'email',
         'externalId' => 'externalId',
-        'displayName' => 'displayName'
+        'displayName' => 'displayName',
+        'lang' => 'lang',
     ];
 
     /**
@@ -118,7 +121,8 @@ class RequestRegisterUser implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $setters = [
         'email' => 'setEmail',
         'externalId' => 'setExternalId',
-        'displayName' => 'setDisplayName'
+        'displayName' => 'setDisplayName',
+        'lang' => 'setLang',
     ];
 
     /**
@@ -129,7 +133,8 @@ class RequestRegisterUser implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $getters = [
         'email' => 'getEmail',
         'externalId' => 'getExternalId',
-        'displayName' => 'getDisplayName'
+        'displayName' => 'getDisplayName',
+        'lang' => 'getLang',
     ];
 
     /**
@@ -195,6 +200,7 @@ class RequestRegisterUser implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['email'] = $data['email'] ?? null;
         $this->container['externalId'] = $data['externalId'] ?? null;
         $this->container['displayName'] = $data['displayName'] ?? null;
+        $this->container['lang'] = $data['lang'] ?? null;
     }
 
     /**
@@ -292,6 +298,30 @@ class RequestRegisterUser implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDisplayName($displayName)
     {
         $this->container['displayName'] = $displayName;
+
+        return $this;
+    }
+
+    /**
+     * Gets lang
+     *
+     * @return string|null
+     */
+    public function getLang()
+    {
+        return $this->container['lang'];
+    }
+
+    /**
+     * Sets lang
+     *
+     * @param string|null $lang The user's language.
+     *
+     * @return self
+     */
+    public function setLang($lang)
+    {
+        $this->container['lang'] = $lang;
 
         return $this;
     }
